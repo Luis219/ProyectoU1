@@ -43,11 +43,18 @@
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
           <ul class="navbar-nav text-white">
               <!--Opciones de menú-->
-            <li class="nav-item active">
-              <a class="nav-link text-white" href="#">Ofertas<span class="sr-only">(current)</span></a>
-            </li>
+          
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ofertas
+              </a>
+               <!--Lista desplegable de la última opción-->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{url_for('ofertas')}}">Ofertas</a>
+                <a class="dropdown-item" href="{{url_for('crearofertas')}}">Crear Ofertas</a>
+                
+              </div>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Empresas</a>
+              <a class="nav-link text-white" href="{{url_for('empresaslistado')}}">Empresas</a>
             </li>
             
             <li class="nav-item dropdown">
@@ -56,14 +63,13 @@
               </a>
                <!--Lista desplegable de la última opción-->
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Reclutamiento</a>
-                <a class="dropdown-item" href="#">Aviso Legal</a>
+                <a class="dropdown-item" href="{{url_for('nosotros')}}">Nosotros</a>
+                <a class="dropdown-item" href="{{url_for('reclutamiento')}}">Reclutamiento</a>
+                <a class="dropdown-item" href="{{url_for('avisolegal')}}">Aviso Legal</a>
                 
               </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Contacto</a>
-              </li>
+        
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Registro Empresa
@@ -71,7 +77,7 @@
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{url_for('registroempresa')}}">Registrarse</a>
-                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('accederempresa')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -81,8 +87,8 @@
                 </a>
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Registrarse</a>
-                  <a class="dropdown-item" href="#">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Registrarse</a>
+                  <a class="dropdown-item" href="{{url_for('accederpostulante')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -94,24 +100,19 @@
   
     
 <br>
-<!-- Consejos Reclutamiento -->
+<!-- Nostros-->
 <center>
-    <h1>Consejos de Reclutamiento</h1>
+    <h1>Nosotros</h1>
 </center>
 <blockquote class="blockquote text-right text-center">
-    <p class="mb-0">
-        1. Tenga claro el perfil que busca. Lo primero que deberá considerar al momento de contratar empleados, es definir el perfil profesional que busca. “Lo primero es hacer un adecuado levantamiento del perfil, esto va a garantizar que los curriculums que vayan llegando, sean congruentes con lo que se busca y así tendremos mayor número de candidatos idóneos”, dice Lydia Arbaiza, PhD y profesora de Administración de la Universidad Esan.
-    </p>
-   <p class="mb-0">
-    2. Publique el requerimiento del perfil que necesita. La propuesta de la empresa es clave en el proceso de selección. Y esto tiene aspectos explícitos e implícitos, explica el académico de IAE. 
-   </p>
-    <p class="mb-0">
-        3. Seleccione una forma de reclutamiento. Una vez definidos estos aspectos, la búsqueda de profesionales se puede realizar de manera interna, a través de comunicados al personal, o de manera externa, a través de publicaciones en diferentes medios,</p>
-    <p class="mb-0">
-        4. Busque referencias y contactos del candidato. Si se requiere una persona para ocupar un alto mando gerencial o directivo, lo recomendable -de acuerdo a los especialistas- será utilizar la metodología del “headhunting”,
-
-    </p>
-        <footer class="blockquote-footer">América Economía</footer>
+    <p class="mb-0">Somos una empresa cuya principal motivación es ayudar a miles de jóvenes a conseguir empleo.</p>
+    <p class="mb-0">Nuestra misión es convertirnos en el portal de empleo número uno del país y a largo plazo en uno <b>
+        de los mejores de toda América Latina.
+    </b>.</p>
+    <p class="mb-0">Nuestro modelo de negocio gira en torno a las ofertas de trabajo que publican diversas empresas. <b>
+        De la misma manera los postulantes o aplicantes pueden crearse un perfil y postular directamente desde el portal.
+    </b></p>
+    
 </blockquote>
 
 
@@ -120,21 +121,22 @@
   <!--Uso de cards en conjunto con nav-->
   <div class=" foot row ">
        <!--Se trabaja con columnas tipo sm para mostrar en dispositivos con resolución igual o mayor a 768 px-->
-    <div class="col-sm-5">
-      <div class="card ">
-        <div class="card-body bg-success">
-            <!--Con el uso de nav se pueden mostrar opciones de informacion sobre el portal-->
-          <h5 class="card-title text-dark">Sobre nosotros</h5>
-          <nav class="nav flex-column">
-            <a class="nav-link active text-white" href="#">Nuestro compromiso</a>
-            <a class="nav-link text-white" href="#">Con quién hemos trabajado</a>
-            <a class="nav-link text-white" href="#">Aviso Legal</a>
+       <div class="col-sm-5">
+        <div class="card ">
+          <div class="card-body bg-success">
+              <!--Con el uso de nav se pueden mostrar opciones de informacion sobre el portal-->
+            <h5 class="card-title text-dark">Sobre nosotros</h5>
+            <nav class="nav flex-column">
+              <a class="nav-link active text-white" href="{{url_for('nosotros')}}">Nuestro compromiso</a>
+              <a class="nav-link text-white" href="{{url_for('empresaslistado')}}">Con quién hemos trabajado</a>
+              <a class="nav-link text-white" href="{{url_for('avisolegal')}}">Aviso Legal</a>
+              
+            </nav>
             
-          </nav>
-          
+          </div>
         </div>
       </div>
-    </div>
+  
 
      <!--Sección de contacto-->
      <!--Se trabaja con columnas tipo sm con tamaño de 4-->

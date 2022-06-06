@@ -40,15 +40,15 @@ def accederempresa():
 #Controlador quer renderiza la página accederempresa
 def accederpostulante():
     ''' abre la pagina accederpostulante'''
-    return render_template('accederpostulantea.html')
+    return render_template('accederpostulante.html')
 
 #Ruta página crearoferta
-@app.route('/crearoferta')
+@app.route('/crearofertas')
 
 #Controlador quer renderiza la página crearoferta
-def crearoferta():
+def crearofertas():
     ''' abre la pagina crearoferta'''
-    return render_template('crearoferta.html')
+    return render_template('crearofertas.html')
 
 #Ruta página crearoferta
 @app.route('/ofertas')

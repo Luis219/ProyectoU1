@@ -43,11 +43,18 @@
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
           <ul class="navbar-nav text-white">
               <!--Opciones de menú-->
-            <li class="nav-item active">
-              <a class="nav-link text-white" href="#">Ofertas<span class="sr-only">(current)</span></a>
-            </li>
+          
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ofertas
+              </a>
+               <!--Lista desplegable de la última opción-->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{url_for('ofertas')}}">Ofertas</a>
+                <a class="dropdown-item" href="{{url_for('crearofertas')}}">Crear Ofertas</a>
+                
+              </div>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Empresas</a>
+              <a class="nav-link text-white" href="{{url_for('empresaslistado')}}">Empresas</a>
             </li>
             
             <li class="nav-item dropdown">
@@ -56,14 +63,13 @@
               </a>
                <!--Lista desplegable de la última opción-->
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Reclutamiento</a>
-                <a class="dropdown-item" href="#">Aviso Legal</a>
+                <a class="dropdown-item" href="{{url_for('nosotros')}}">Nosotros</a>
+                <a class="dropdown-item" href="{{url_for('reclutamiento')}}">Reclutamiento</a>
+                <a class="dropdown-item" href="{{url_for('avisolegal')}}">Aviso Legal</a>
                 
               </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Contacto</a>
-              </li>
+        
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Registro Empresa
@@ -71,7 +77,7 @@
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{url_for('registroempresa')}}">Registrarse</a>
-                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('accederempresa')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -81,8 +87,8 @@
                 </a>
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Registrarse</a>
-                  <a class="dropdown-item" href="#">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Registrarse</a>
+                  <a class="dropdown-item" href="{{url_for('accederpostulante')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -96,7 +102,7 @@
 <br>
 <!-- Consejos Reclutamiento -->
 <center>
-    <h1>Consejos de Reclutamiento</h1>
+    <h1>Políticas de privacidad</h1>
 </center>
 <blockquote class="blockquote text-right text-center">
     <p class="mb-0">
@@ -112,21 +118,22 @@ Todas el contenido de VirtualJob le pertenece a la misma empresa    </p>
   <!--Uso de cards en conjunto con nav-->
   <div class=" foot row ">
        <!--Se trabaja con columnas tipo sm para mostrar en dispositivos con resolución igual o mayor a 768 px-->
-    <div class="col-sm-5">
-      <div class="card ">
-        <div class="card-body bg-success">
-            <!--Con el uso de nav se pueden mostrar opciones de informacion sobre el portal-->
-          <h5 class="card-title text-dark">Sobre nosotros</h5>
-          <nav class="nav flex-column">
-            <a class="nav-link active text-white" href="#">Nuestro compromiso</a>
-            <a class="nav-link text-white" href="#">Con quién hemos trabajado</a>
-            <a class="nav-link text-white" href="#">Aviso Legal</a>
+       <div class="col-sm-5">
+        <div class="card ">
+          <div class="card-body bg-success">
+              <!--Con el uso de nav se pueden mostrar opciones de informacion sobre el portal-->
+            <h5 class="card-title text-dark">Sobre nosotros</h5>
+            <nav class="nav flex-column">
+              <a class="nav-link active text-white" href="{{url_for('nosotros')}}">Nuestro compromiso</a>
+              <a class="nav-link text-white" href="{{url_for('empresaslistado')}}">Con quién hemos trabajado</a>
+              <a class="nav-link text-white" href="{{url_for('avisolegal')}}">Aviso Legal</a>
+              
+            </nav>
             
-          </nav>
-          
+          </div>
         </div>
       </div>
-    </div>
+  
 
      <!--Sección de contacto-->
      <!--Se trabaja con columnas tipo sm con tamaño de 4-->
