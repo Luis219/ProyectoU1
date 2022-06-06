@@ -100,6 +100,15 @@
       <br>
       <br>
       <center>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="alert alert-warning" role="alert">
+        {% for message in messages %}
+        <li >{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
 
         <!--Seección de registro-->
      <!--Uso de cards en conjunto con nav y form para que el usuario envíe sus sugerencias-->
@@ -107,7 +116,7 @@
         <div class="card border border-info ">
           <div class="card-body text-light bg-dark">
             <h5 class="card-title  text-info"> Crear Oferta de Trabajo</h5>
-            <form>
+            <form method="post" action="{{url_for('nuevaoferta')}}">
                 <div class="form-group">
                     <label for="inputName">Título</label>
                     <input type="text" class="form-control" id="inputName" name="titulo" placeholder="">

@@ -34,6 +34,15 @@
       </style>
 </head>
 <body>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="alert alert-warning" role="alert">
+    {% for message in messages %}
+    <li >{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
     <!--Uso de componente nav para la creacion del menú, se llama la navbar, se colocan bordes tipo info, y fondo verde-->
     <nav class="navbar navbar-expand-lg navbar-light bg-success text-white ">
         <a class="navbar-brand text-info" href="#">VirtualJob</a>
@@ -110,14 +119,23 @@
       
     </div>
   </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  
+  
+    
+      {% for tituloOferta  in titulosOferta %}
+      <h5 class="card-title">{{tituloOferta }} </h5>
+      {% endfor %}
+      {% for descripcionOferta  in descripcionesOferta %}
+      <p class="card-text">{{descripcionOferta }}</p>
+      {% endfor %}
+      {% for direccionOferta  in direccionesOferta %}
+      <p class="card-text">{{direccionOfertaOferta }}</p>
+      {% endfor %}
       
-    </div>
-    <img class="card-img-bottom" src=" " alt="Card image cap">
-  </div>
+    
+    
+ 
+ 
   
 <br>
 
