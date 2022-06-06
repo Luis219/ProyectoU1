@@ -70,8 +70,8 @@
                 </a>
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Registrarse</a>
-                  <a class="dropdown-item" href="#">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('registroempresa')}}">Registrarse</a>
+                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -92,56 +92,22 @@
         
       </nav>
   
-      <center>
-          <br>
-          <br>
+    
+<br>
+<!-- Consejos Reclutamiento -->
+<center>
+    <h1>Consejos de Reclutamiento</h1>
+</center>
+<blockquote class="blockquote text-right text-center">
+    <p class="mb-0">
+    El contenido provisto en esta página está bajo la autorización de los usuarios publciantes de ofertas como <br>
+como postulantes.
+Todas el contenido de VirtualJob le pertenece a la misma empresa    </p>
+  
+</blockquote>
 
-        <!--Seección de registro-->
-     <!--Uso de cards en conjunto con nav y form para que el usuario envíe sus sugerencias-->
-    <div class="col-sm-4">
-        <div class="card border border-info ">
-          <div class="card-body text-light bg-dark">
-            <h5 class="card-title  text-info">Registro</h5>
-            <form>
-                <div class="form-group">
-                    <label for="inputName">Nombre</label>
-                    <input type="text" class="form-control" id="inputName" name="nombre" placeholder="">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="phone">Teléfono:</label>
-                    <input type="tel" id="phone"class="form-control"  name="telefono" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputAddress">Experiencia</label>
-                    <input type="text" class="form-control" id="inputAddress" name="direccion" placeholder="1234 Main St">
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Correo electrónico</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="correo" aria-describedby="emailHelp" placeholder="Ingrese su dirección de correo electrónico">
-                  <small id="emailHelp" class="form-text text-muted">Ingrese su dirección de correo electrónico/small>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="contraseña" placeholder="Contraseña">
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Acepto todas las condiciones de uso</label>
-                </div>
-                 <!--Botón utilizado para ingresar al sitio web-->
-                <button type="submit" class="btn btn-primary bg-dark border border-info "  >Ingresar</button>
-                <br>
-                <br>
-                 <!--Botón utilizado para registrarse como suscriptor del sitio web-->
-                <button type="submit" class="btn btn-primary bg-dark border border-info ">Registrarse</button>
-              </form>
-            
-          </div>
-        </div>
-      </div>
-      <br>
-      <br>
+
+<br>
 
   <!--Uso de cards en conjunto con nav-->
   <div class=" foot row ">

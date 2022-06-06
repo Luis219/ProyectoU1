@@ -70,8 +70,8 @@
                 </a>
                  <!--Lista desplegable de la última opción-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Registrarse</a>
-                  <a class="dropdown-item" href="#">Ingresar</a>
+                  <a class="dropdown-item" href="{{url_for('registroempresa')}}">Registrarse</a>
+                  <a class="dropdown-item" href="{{url_for('registropostulante')}}">Ingresar</a>
                   
                 </div>
               </li>
@@ -88,60 +88,40 @@
               </li>
           </ul>
         </div>
-       <!--Botón que llevaría a otra sección del sitio web para suscriptores-->
+   
         
       </nav>
   
-      <center>
-          <br>
-          <br>
-
-        <!--Seección de registro-->
-     <!--Uso de cards en conjunto con nav y form para que el usuario envíe sus sugerencias-->
-    <div class="col-sm-4">
-        <div class="card border border-info ">
-          <div class="card-body text-light bg-dark">
-            <h5 class="card-title  text-info">Registro</h5>
-            <form>
-                <div class="form-group">
-                    <label for="inputName">Nombre</label>
-                    <input type="text" class="form-control" id="inputName" name="nombre" placeholder="">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="phone">Teléfono:</label>
-                    <input type="tel" id="phone"class="form-control"  name="telefono" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputAddress">Experiencia</label>
-                    <input type="text" class="form-control" id="inputAddress" name="direccion" placeholder="1234 Main St">
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Correo electrónico</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="correo" aria-describedby="emailHelp" placeholder="Ingrese su dirección de correo electrónico">
-                  <small id="emailHelp" class="form-text text-muted">Ingrese su dirección de correo electrónico/small>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="contraseña" placeholder="Contraseña">
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Acepto todas las condiciones de uso</label>
-                </div>
-                 <!--Botón utilizado para ingresar al sitio web-->
-                <button type="submit" class="btn btn-primary bg-dark border border-info "  >Ingresar</button>
-                <br>
-                <br>
-                 <!--Botón utilizado para registrarse como suscriptor del sitio web-->
-                <button type="submit" class="btn btn-primary bg-dark border border-info ">Registrarse</button>
-              </form>
-            
-          </div>
+    
+<!--Uso de Cards para exponer últimas ofertas-->
+<div class="card-deck text-light ">
+     <!--Se establecen colores, fondo verde, y texto blanco-->
+    <div class="card border border-info  bg-success text-white ">
+      <img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/02/26/13/56/sports-650364_960_720.jpg" alt="Card image cap">
+      <div class="card-body">
+           <!--Se establece únicamente para el título el color blacnco-->
+        <h5 class="card-title  text-white">Planeta Sport</h5>
+      
+      </div>
+    </div>
+    <div class="card border border-info  bg-success text-white ">
+      <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/10/14/20/14/library-488690_960_720.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Libería Cohello</h5>
+       
+      </div>
+    </div>
+    <div class="card border border-info  bg-success text-white ">
+        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/05/31/11/17/office-2360063_960_720.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Consultoría Beccker</h5>
+         
         </div>
       </div>
-      <br>
-      <br>
+    
+
+  </div>
+<br>
 
   <!--Uso de cards en conjunto con nav-->
   <div class=" foot row ">
