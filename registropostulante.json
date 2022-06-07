@@ -1,0 +1,18 @@
+{
+    "datos": [
+        {
+            "nombrePostulante": "Angel",
+            "telefonoPostulante": "0989976543",
+            "experienciaPostulante": "Constructor",
+            "correoPostulante": "lparedez@espe.edu.ec3",
+            "contraseniaPostulante": "6767"
+        },
+        {
+            "nombrePostulante": "Luis",
+            "telefonoPostulante": "0989976543",
+            "experienciaPostulante": "Constructor",
+            "correoPostulante": "hino@gmail.com",
+            "contraseniaPostulante": "3434"
+        }
+    ]
+}

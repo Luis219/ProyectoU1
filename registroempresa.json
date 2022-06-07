@@ -1,0 +1,18 @@
+{
+    "datos": [
+        {
+            "nombresEmpresas": "Mavesa",
+            "direccionesEmpresas": "Quito",
+            "telefonosEmpresas": "0989976543",
+            "correosEmpresas": "mavesa@gmail.com",
+            "contraseniasEmpresas": "1234"
+        },
+        {
+            "nombresEmpresas": "Hino",
+            "direccionesEmpresas": "Quito",
+            "telefonosEmpresas": "0989976543",
+            "correosEmpresas": "hino@gmail.com",
+            "contraseniasEmpresas": "897"
+        }
+    ]
+}
