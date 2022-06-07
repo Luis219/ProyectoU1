@@ -121,17 +121,56 @@
   </div>
   
   
-    
-      {% for tituloOferta  in titulosOferta %}
-      <h5 class="card-title">{{tituloOferta }} </h5>
-      {% endfor %}
-      {% for descripcionOferta  in descripcionesOferta %}
-      <p class="card-text">{{descripcionOferta }}</p>
-      {% endfor %}
-      {% for direccionOferta  in direccionesOferta %}
-      <p class="card-text">{{direccionOfertaOferta }}</p>
-      {% endfor %}
-      
+    <table class="table table-hover table-success ">
+      <thead>
+        <tr>
+          <th scope="col">Titulos Ofertas</th>
+          <th scope="col">Descripciones Oferta</th>
+          <th scope="col">Direcciones Ofertas</th>
+          <th scope="col">Postular</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr> 
+          <!--Se recorren los titulos de las ofertas-->
+          <td>
+            {% for tituloOferta  in titulosOferta %}
+               <h5 class="card-title">{{tituloOferta }} </h5>
+              {% endfor %}
+            
+          </td>
+
+            <!--Se recorren las descripciones de las ofertas-->
+            <td>
+              {% for descripcionOferta  in descripcionesOferta %}
+                <p class="card-text">{{descripcionOferta }}</p>
+                {% endfor %}
+             
+            </td>
+             <!--Se recorren las direcciones de las ofertas-->
+             <td>
+              {% for direccionOferta  in direccionesOferta %}
+                 <p class="card-text">{{direccionOferta }}</p>
+                {% endfor %}
+              
+            </td>
+           <td>
+             <ul>
+              {% for direccionOferta  in direccionesOferta %}
+              <li> <button type="button" class="btn btn-info w-15 border border-white ">Postular</button></li> 
+                {% endfor %}
+              </ul>
+            </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+
+  
     
     
  

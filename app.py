@@ -1,4 +1,5 @@
 #Se importa la librería Flask, abort y render_template
+
 import re
 import json
 import os
@@ -15,13 +16,17 @@ app.secret_key='12345'
 def index():
     return render_template('index.html')
 
+
 #Ruta registroempresa
 @app.route('/registroempresa')
 
 #Controlador quer renderiza la página  registroempresa
 def registroempresa():
     ''' abre la pagina registroempresa'''
+  
     return render_template('registroempresa.html')
+
+    
 #Ruta registropostulante
 @app.route('/registropostulante')
 
@@ -139,6 +144,115 @@ def nuevaoferta():
         flash('Error al ingresar los datos')
         return render_template('crearofertas.html')
  
+nombresEmpresas=[]
+direccionesEmpresas=[]
+telefonosEmpresas=[]
+correosEmpresas=[]
+contraseniasEmpresas=[]
+@app.route('/nuevoregistroempresa',methods=['POST'])
+
+#función que permite enviar los datos ingresados hacia la tabla
+def nuevoregistroempresa(): 
+    nombreEmpresa= request.form.get('nombre')
+    direccionEmpresa= request.form.get('direccion')
+    telefonoEmpresa= request.form.get('telefono')
+    correoEmpresa= request.form.get('correo')
+    contraseniaEmpresa= request.form.get('contrasenia')
+
+  
+
+    #validar que se ingresen datos
+    if len(nombreEmpresa)>0 and len(direccionEmpresa)>0 and len(telefonoEmpresa)>0 and len(correoEmpresa)>0 and len(contraseniaEmpresa)>0:
+       
+       #se ingresen los datos a las listas
+ 
+        nombresEmpresas.append(nombreEmpresa)
+        direccionesEmpresas.append(direccionEmpresa)
+        telefonosEmpresas.append(telefonoEmpresa)
+        correosEmpresas.append(correoEmpresa)
+        contraseniasEmpresas.append(contraseniaEmpresa)
+
+        
+        #con path se especifica la ruta del archivo
+        path, _=os.path.split(os.path.abspath(__file__))
+    
+        #se crean los arreglos 
+        data={}
+        data['nombresEmpresas']=[]
+        data['direccionesEmpresas']=[]
+        data['telefonosEmpresas']=[]
+        data['correosEmpresas']=[]  
+        data['contraseniasEmpresas']=[]     
+
+        data['nombresEmpresas'].append(nombresEmpresas)
+        data['direccionesEmpresas'].append(direccionesEmpresas)
+        data['telefonosEmpresas'].append(telefonosEmpresas)
+        data['correosEmpresas'].append(correosEmpresas)
+        data['contraseniasEmpresas'].append(contraseniasEmpresas)
+    
+         #se escribe en el archivo datos.json
+        with open(path+f'/registroempresas.json','w') as file:
+            json.dump(data, file, indent=4)
+
+        return render_template('crearofertas.html', titulosOferta=titulosOferta, descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
+    else:
+        #alerta en caso de que existan errores
+        flash('Error al ingresar los datos')
+        return render_template('registroempresa.html')
+
+nombresPostulantes=[]
+telefonosPostulantes=[]
+experienciasPostulantes=[]
+correosPostulantes=[]
+contraseniasPostulantes=[]
+@app.route('/nuevoregistropostulante',methods=['POST'])
+
+#función que permite guardar los datos
+def nuevoregistropostulante(): 
+    nombrePostulante= request.form.get('nombre')
+    telefonoPostulante= request.form.get('telefono')
+    experienciaPostulante= request.form.get('experiencia')
+    correoPostulante= request.form.get('correo')
+    contraseniaPostulante= request.form.get('contrasenia')
+
+    #validar que se ingresen datos
+    if len(nombrePostulante)>0 and len(telefonoPostulante)>0 and len(experienciaPostulante)>0 and len(correoPostulante)>0 and len(contraseniaPostulante)>0:
+       
+       #se ingresen los datos a las listas
+ 
+        nombresPostulantes.append(nombrePostulante)
+        telefonosPostulantes.append(telefonoPostulante)
+        experienciasPostulantes.append(experienciaPostulante)
+        correosPostulantes.append(correoPostulante)
+        contraseniasPostulantes.append(contraseniaPostulante)
+
+        
+        #con path se especifica la ruta del archivo
+        path, _=os.path.split(os.path.abspath(__file__))
+    
+        #se crean los arreglos 
+        data={}
+        data['nombresPostulantes']=[]
+        data['telefonosPostulantes']=[]
+        data['experienciasPostulantes']=[]
+        data['correosPostulantes']=[]  
+        data['contraseniasPostulantes']=[]     
+
+        data['nombresPostulantes'].append(nombresPostulantes)
+        data['telefonosPostulantes'].append(telefonosPostulantes)
+        data['experienciasPostulantes'].append(experienciasPostulantes)
+        data['correosPostulantes'].append(correosPostulantes)
+        data['contraseniasPostulantes'].append(contraseniasPostulantes)
+    
+         #se escribe en el archivo datos.json
+        with open(path+f'/registropostulantes.json','w') as file:
+            json.dump(data, file, indent=4)
+
+        return render_template('ofertas.html', titulosOferta=titulosOferta, descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
+    else:
+        #alerta en caso de que existan errores
+        flash('Error al ingresar los datos')
+        return render_template('registropostulante.html')
 
 #Función principal que ejecuta la aplicación
 if __name__ == '__main__':
