@@ -1,27 +1,32 @@
 {
     "nombresPostulantes": [
         [
+            "Angel",
             "Angel"
         ]
     ],
     "telefonosPostulantes": [
         [
+            "0989976543",
             "0989976543"
         ]
     ],
     "experienciasPostulantes": [
         [
+            "Constructor",
             "Constructor"
         ]
     ],
     "correosPostulantes": [
         [
+            "lparedez@espe.edu.ec3",
             "lparedez@espe.edu.ec"
         ]
     ],
     "contraseniasPostulantes": [
         [
-            "12345"
+            "1234",
+            "89"
         ]
     ]
 }
