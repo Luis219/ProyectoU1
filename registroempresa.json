@@ -1,4 +1,11 @@
 {
-    "correo": "c@gmail.com",
-    "contrasenia": "798"
+    "datos": [
+        {
+            "nombresEmpresas": "Mavesa",
+            "direccionesEmpresas": "Quito",
+            "telefonosEmpresas": "0989976543",
+            "correosEmpresas": "c@gmail.com",
+            "contraseniasEmpresas": "AKk=*9gYb9EwMkSepWWy4TsYkUg==*kP5vwiWp54EeIoOR33KJQw==*SSLMZ5l/LDFiWlzu3XkvMw=="
+        }
+    ]
 }

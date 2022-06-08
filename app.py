@@ -6,7 +6,7 @@ import os
 from turtle import pos
 from markupsafe import escape
 from flask import Flask, abort, render_template, request, flash, url_for, redirect
-from empresa import Usuario
+import cryptocode
 
 #instancia  de la aplicación web
 app=Flask(__name__, template_folder='templates')
@@ -66,8 +66,8 @@ def crearofertas():
 
 #Controlador quer renderiza la página ofertas
 def ofertas():
-    ''' abre la pagina ofertas'''
-    return render_template('ofertas.html')
+    ''' abre la pagina ofertas por medio de la funcion ver_ofertas'''
+    return ver_ofertas()
 
 #Ruta página crearoferta
 @app.route('/nosotros')
@@ -140,13 +140,15 @@ def nuevaoferta():
         with open(path+f'/ofertas.json','w') as file:
             json.dump(data, file, indent=4)
 
-        return render_template('ofertas.html', titulosOferta=titulosOferta, descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
+        
+
+        return ver_ofertas()
     else:
         #alerta en caso de que existan errores
         flash('Error al ingresar los datos')
         return render_template('crearofertas.html')
 
-"""
+
 data_Empresas={}
 data_Empresas['datos']=[]
 @app.route('/nuevoregistroempresa',methods=['POST'])
@@ -158,6 +160,9 @@ def nuevoregistroempresa():
     telefonoEmpresa= request.form.get('telefono')
     correoEmpresa= request.form.get('correo')
     contraseniaEmpresa= request.form.get('contrasenia')
+
+    #cifrado de la contraseña
+    cifrado=cryptocode.encrypt(contraseniaEmpresa, "password")
 
   
 
@@ -169,7 +174,7 @@ def nuevoregistroempresa():
        path, _=os.path.split(os.path.abspath(__file__))
        
        data_Empresas['datos'].append({"nombresEmpresas":nombreEmpresa,"direccionesEmpresas":direccionEmpresa,"telefonosEmpresas":telefonoEmpresa,"correosEmpresas":correoEmpresa,
-        "contraseniasEmpresas":contraseniaEmpresa})
+        "contraseniasEmpresas":cifrado})
     
          #se escribe en el archivo datos.json
        with open(path+f'/registroempresa.json','w') as file:
@@ -180,43 +185,6 @@ def nuevoregistroempresa():
         #alerta en caso de que existan errores
         flash('Error al ingresar los datos')
         return render_template('registroempresa.html')
-
-"""
-data_Empresas={}
-data_Empresas['datos']=[]
-@app.route('/nuevoregistroempresa',methods=['POST'])
-
-#función que permite enviar los datos ingresados hacia la tabla
-def nuevoregistroempresa(): 
-    nombreEmpresa= request.form.get('nombre')
-    direccionEmpresa= request.form.get('direccion')
-    telefonoEmpresa= request.form.get('telefono')
-    correoEmpresa= request.form.get('correo')
-    contraseniaEmpresa= request.form.get('contrasenia')
-
-    nuevaempresa=Usuario(correoEmpresa, contraseniaEmpresa)
-    
-    
-    user=nuevaempresa.__dict__
-    data_Empresas['datos']=[user]
-
-    
-         #con path se especifica la ruta del archivo
-    path, _=os.path.split(os.path.abspath(__file__))
-
-    #se escribe en el archivo datos.json
-    with open(path+f'/registroempresa.json','w') as file:
-            json.dump(user, file, indent=4)
-        
-    return render_template('crearofertas.html', titulosOferta=titulosOferta, descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
-    
-   
-
-       
-
-
-
-
 
 
 data_Postulantes={}
@@ -231,6 +199,9 @@ def nuevoregistropostulante():
     experienciaPostulante= request.form.get('experiencia')
     correoPostulante= request.form.get('correo')
     contraseniaPostulante= request.form.get('contrasenia')
+    
+    #cifrado de la contraseña
+    cifrado=cryptocode.encrypt(contraseniaPostulante, "password")
 
     #validar que se ingresen datos
     if len(nombrePostulante)>0 and len(telefonoPostulante)>0 and len(experienciaPostulante)>0 and len(correoPostulante)>0 and len(contraseniaPostulante)>0:
@@ -239,14 +210,12 @@ def nuevoregistropostulante():
    
        
         data_Postulantes['datos'].append({"nombrePostulante":nombrePostulante, "telefonoPostulante":telefonoPostulante,
-        "experienciaPostulante":experienciaPostulante, "correoPostulante": correoPostulante, "contraseniaPostulante":contraseniaPostulante})
+        "experienciaPostulante":experienciaPostulante, "correoPostulante": correoPostulante, "contraseniaPostulante":cifrado})
         
    
         #con path se especifica la ruta del archivo
         path, _=os.path.split(os.path.abspath(__file__))
     
-      
-  
     
          #se escribe en el archivo datos.json
         with open(path+f'/registropostulante.json','w') as file:
@@ -275,19 +244,17 @@ def validar_usuarios_empresa():
    #se carga el archivo registroempresas.json
     with open(path+'/registroempresa.json') as file:
        data= json.load(file)
+       
 
-    
-"""
     for elemento in data['datos']:
-        for i in range (len(elemento)):
-            if correo==elemento["correosEmpresas"][i] and contrasenia==elemento["contraseniasEmpresas"][i]:
-                     return render_template('crearofertas.html')
-            else:
-                     flash("Error")
-                     return render_template('accederempresa.html')
-"""
-         
-        
+        #descifrado de la contraseña
+         descifrado= cryptocode.decrypt(elemento['contraseniasEmpresas'], "password")
+         if correo==elemento['correosEmpresas'] and contrasenia==descifrado:
+                return render_template('crearofertas.html')
+         else:
+                flash("Error")
+                return render_template('accederempresa.html')
+
 #Validación de usuarios postulantes
 
 #ruta hacia validar_usuarios_postulantes
@@ -306,17 +273,38 @@ def validar_usuarios_postulantes():
        data= json.load(file)
        
 
-    for i in len(data['datos']):
-        ce=(data['datos'])[i].get("correoPostulante")[0]
-        co=(data['datos'])[i].get("coPostulante")[0]
-        
+    for elemento in data['datos']:
 
-        if correo==ce and contrasenia==co:
-            return render_template('ofertas.html')
-
-        else:
+        #descifrado de la contraseña
+         descifrado= cryptocode.decrypt(elemento['contraseniaPostulante'], "password")
+         if correo==elemento["correoPostulante"] and contrasenia==descifrado:
+                #retorna la funcion de ver ofertas
+                return ver_ofertas()
+         else:
                 flash("Error")
                 return render_template('accederpostulante.html')
+
+#ruta hacia ver ofertas
+@app.route('/ver_ofertas',methods=['POST'])
+
+#función que permite visualizar las tareas almacenadas
+def ver_ofertas():
+ 
+
+    path, _=os.path.split(os.path.abspath(__file__))
+    
+   #se carga el archivo de las ofertas
+    with open(path+'/ofertas.json') as file:
+       data= json.load(file)
+
+    for i in data["titulosOferta"]:
+        for j in data["descripcionesOferta"]:
+            for k in data["direccionesOferta"]:
+                titulosOferta=data["titulosOferta"][0]
+                descripcionesOferta=data["descripcionesOferta"][0]
+                direccionesOferta=data["direccionesOferta"][0]
+                return render_template('ofertas.html', titulosOferta=titulosOferta,descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
+    
 
     
     
