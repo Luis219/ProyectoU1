@@ -6,6 +6,7 @@ import os
 from turtle import pos
 from markupsafe import escape
 from flask import Flask, abort, render_template, request, flash, url_for, redirect
+from empresa import Usuario
 
 #instancia  de la aplicación web
 app=Flask(__name__, template_folder='templates')
@@ -145,7 +146,7 @@ def nuevaoferta():
         flash('Error al ingresar los datos')
         return render_template('crearofertas.html')
 
-
+"""
 data_Empresas={}
 data_Empresas['datos']=[]
 @app.route('/nuevoregistroempresa',methods=['POST'])
@@ -179,6 +180,43 @@ def nuevoregistroempresa():
         #alerta en caso de que existan errores
         flash('Error al ingresar los datos')
         return render_template('registroempresa.html')
+
+"""
+data_Empresas={}
+data_Empresas['datos']=[]
+@app.route('/nuevoregistroempresa',methods=['POST'])
+
+#función que permite enviar los datos ingresados hacia la tabla
+def nuevoregistroempresa(): 
+    nombreEmpresa= request.form.get('nombre')
+    direccionEmpresa= request.form.get('direccion')
+    telefonoEmpresa= request.form.get('telefono')
+    correoEmpresa= request.form.get('correo')
+    contraseniaEmpresa= request.form.get('contrasenia')
+
+    nuevaempresa=Usuario(correoEmpresa, contraseniaEmpresa)
+    
+    
+    user=nuevaempresa.__dict__
+    data_Empresas['datos']=[user]
+
+    
+         #con path se especifica la ruta del archivo
+    path, _=os.path.split(os.path.abspath(__file__))
+
+    #se escribe en el archivo datos.json
+    with open(path+f'/registroempresa.json','w') as file:
+            json.dump(user, file, indent=4)
+        
+    return render_template('crearofertas.html', titulosOferta=titulosOferta, descripcionesOferta=descripcionesOferta, direccionesOferta=direccionesOferta)
+    
+   
+
+       
+
+
+
+
 
 
 data_Postulantes={}
@@ -237,16 +275,19 @@ def validar_usuarios_empresa():
    #se carga el archivo registroempresas.json
     with open(path+'/registroempresa.json') as file:
        data= json.load(file)
-       
 
+    
+"""
     for elemento in data['datos']:
+        for i in range (len(elemento)):
+            if correo==elemento["correosEmpresas"][i] and contrasenia==elemento["contraseniasEmpresas"][i]:
+                     return render_template('crearofertas.html')
+            else:
+                     flash("Error")
+                     return render_template('accederempresa.html')
+"""
+         
         
-         if correo==elemento['correosEmpresas'] and contrasenia==elemento['contraseniasEmpresas']:
-                return render_template('crearofertas.html')
-         else:
-                flash("Error")
-                return render_template('accederempresa.html')
-
 #Validación de usuarios postulantes
 
 #ruta hacia validar_usuarios_postulantes
@@ -265,11 +306,15 @@ def validar_usuarios_postulantes():
        data= json.load(file)
        
 
-    for elemento in data['datos']:
+    for i in len(data['datos']):
+        ce=(data['datos'])[i].get("correoPostulante")[0]
+        co=(data['datos'])[i].get("coPostulante")[0]
         
-         if correo==elemento['correoPostulante'] and contrasenia==elemento['contraseniaPostulante']:
-                return render_template('ofertas.html')
-         else:
+
+        if correo==ce and contrasenia==co:
+            return render_template('ofertas.html')
+
+        else:
                 flash("Error")
                 return render_template('accederpostulante.html')
 
