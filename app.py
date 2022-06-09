@@ -104,13 +104,16 @@ def avisolegal():
 '''
 Parte funcional de la aplicación
 '''
+
+#listas para el registro de ofertas
 titulosOferta=[]
 descripcionesOferta=[]
 direccionesOferta=[]
 @app.route('/nuevaoferta',methods=['POST'])
 
-#función que permite enviar los datos ingresados hacia la tabla
+ 
 def nuevaoferta(): 
+    '''Con esta funcion se puede crear o registrar una nueva oferta de trabajo '''
     tituloOferta= request.form.get('titulo')
     descripcionOferta= request.form.get('descripcion')
     direccionOferta= request.form.get('direccion')
@@ -126,7 +129,7 @@ def nuevaoferta():
           #con path se especifica la ruta del archivo
         path, _=os.path.split(os.path.abspath(__file__))
     
-        #se crean los arreglos 
+        #se crean los listas
         data={}
         data['titulosOferta']=[]
         data['descripcionesOferta']=[]
@@ -136,7 +139,7 @@ def nuevaoferta():
         data["descripcionesOferta"].append( descripcionesOferta)
         data["direccionesOferta"].append(direccionesOferta)
 
-         #se escribe en el archivo datos.json
+         #se escribe en el archivo odertas.json
         with open(path+f'/ofertas.json','w') as file:
             json.dump(data, file, indent=4)
 
@@ -153,8 +156,9 @@ diccionario_Empresas={}
 
 @app.route('/nuevoregistroempresa',methods=['POST'])
 
-#función que permite enviar los datos ingresados hacia la tabla
+#función que permite registrar un nuevo usuario de empresa
 def nuevoregistroempresa(): 
+    '''Regsitro de una nuevo usuario para empesa'''
     nombreEmpresa= request.form.get('nombre')
     direccionEmpresa= request.form.get('direccion')
     telefonoEmpresa= request.form.get('telefono')
@@ -171,7 +175,7 @@ def nuevoregistroempresa():
           #con path se especifica la ruta del archivo
         path, _=os.path.split(os.path.abspath(__file__))
     
-       #se ingresen los datos a las listas
+       #se ingresen los datos y se guardan 
         with open(path+'/registroempresa.json') as file:
              data_Empresas= json.load(file)
        
@@ -179,7 +183,7 @@ def nuevoregistroempresa():
         "contraseniasEmpresas":cifrado}
         data_Empresas.append(diccionario_Empresas)
     
-         #se escribe en el archivo datos.json
+         #se escribe en el registroempresa.json
         with open(path+f'/registroempresa.json','w') as file:
             json.dump(data_Empresas, file, indent=4)
 
@@ -188,20 +192,21 @@ def nuevoregistroempresa():
         #alerta en caso de que existan errores
         flash('Error al ingresar los datos')
         return render_template('registroempresa.html')
+    
 
 
 
-
+#diccionario para el registro de usuarios postulantes
 diccionario_Postulantes={}
 @app.route('/nuevoregistropostulante',methods=['POST'])
 
-#función que permite guardar los datos
-def nuevoregistropostulante(): 
 
+def nuevoregistropostulante(): 
+    '''función que permite guardar los datos de un nuevo postulante'''
       #con path se especifica la ruta del archivo
     path, _=os.path.split(os.path.abspath(__file__))
     
-       #se ingresen los datos a las listas
+       
     with open(path+'/registropostulante.json') as file:
         data_Postulantes= json.load(file)
 

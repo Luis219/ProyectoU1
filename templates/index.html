@@ -74,7 +74,7 @@
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Registro Empresa
                 </a>
-                 <!--Lista desplegable de la última opción-->
+                 <!--Lista desplegable con opcioenes-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{url_for('registroempresa')}}">Registrarse</a>
                   <a class="dropdown-item" href="{{url_for('accederempresa')}}">Ingresar</a>
@@ -85,7 +85,7 @@
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Registro Postulante
                 </a>
-                 <!--Lista desplegable de la última opción-->
+                 <!--Lista desplegable con opciones a otras paginas-->
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{url_for('registropostulante')}}">Registrarse</a>
                   <a class="dropdown-item" href="{{url_for('accederpostulante')}}">Ingresar</a>
@@ -124,7 +124,10 @@
           </a>
     </div>
     <br>
-    <button type="button" class="btn btn-info w-15 border border-white ">Últimas Ofertas</button>
+    <form action="{{url_for('ofertas')}}">
+      <button type="submit" class="btn btn-info w-15 border border-white " >Últimas Ofertas</button>
+    </form>
+   
 </center>
 <br>
 <!-- blockquote con texto en color negro y centrado -->
@@ -178,7 +181,7 @@
     </div>
 
      <!--Sección de contacto-->
-     <!--Se trabaja con columnas tipo sm con tamaño de 4-->
+     <!--Se trabaja con columnas tipo sm con tamaño de 5-->
     <div class="col-sm-5">
       <div class="card border border-info ">
         <div class="card-body text-light bg-success">
