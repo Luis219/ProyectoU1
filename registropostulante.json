@@ -1,18 +1,44 @@
-{
-    "datos": [
-        {
-            "nombrePostulante": "Angel",
-            "telefonoPostulante": "0989976543",
-            "experienciaPostulante": "Constructor",
-            "correoPostulante": "p@y",
-            "contraseniaPostulante": "2Yt9ig==*5Sgs3vGKjNPpHocinWNoFw==*Jec2erYU6H0P/UiR6zdV2Q==*LRJIur/Rumk/FuuKjkcFLA=="
-        },
-        {
-            "nombrePostulante": "Luis",
-            "telefonoPostulante": "0989976543",
-            "experienciaPostulante": "Constructor",
-            "correoPostulante": "p@c",
-            "contraseniaPostulante": "v1Pudg==*aJ5e+v3BB6IzWx8Z2ySuiQ==*1T6plrzOzfD+sJo9Le/h0A==*Mdn2fKPb9vbQJQeLoUBDSA=="
-        }
-    ]
-}
+[
+    {
+        "nombrePostulante": "Angel",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Constructor",
+        "correoPostulante": "hino@gmail.com",
+        "contraseniaPostulante": "123"
+    },
+    {
+        "nombrePostulante": "Chevrolet",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Ingeniero",
+        "correoPostulante": "c@gmail.com",
+        "contraseniaPostulante": "123"
+    },
+    {
+        "nombrePostulante": "Angel",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Constructor",
+        "correoPostulante": "lparedez@espe.edu.ec4",
+        "contraseniaPostulante": "kLwJuA==*ptwo2YROHvy9jmRfuKVTEA==*sDjiQs48tbhkt7Xbc63PDQ==*+e36p3xPM7EWrk3lp14AFw=="
+    },
+    {
+        "nombrePostulante": "Angel",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Constructor",
+        "correoPostulante": "s@d",
+        "contraseniaPostulante": "UK8=*CPOMhfLXV4daaD5+kenWNw==*PXkFLzvJl2XdhPou3mkZLA==*cznkeLu5E+u+jqAqjezfJQ=="
+    },
+    {
+        "nombrePostulante": "Angel",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Constructor",
+        "correoPostulante": "hino@gmail.com",
+        "contraseniaPostulante": "oYw=*KX8f0bDhz201UEu/GMRWGg==*kxp86MC6QxXgVv3pCjHd7g==*TuxIb48dbbPaA17wDyqLKw=="
+    },
+    {
+        "nombrePostulante": "Angel",
+        "telefonoPostulante": "0989976543",
+        "experienciaPostulante": "Constructor",
+        "correoPostulante": "lparedez@espe.edu.ec3",
+        "contraseniaPostulante": "/kA=*+1iXdwb3iYyfeZdV32Ytfg==*enXihqaMXDFnk4CsueaTzA==*xUFatzUi31LrtOubeSX1Jg=="
+    }
+]

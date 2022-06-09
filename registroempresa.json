@@ -1,11 +1,9 @@
-{
-    "datos": [
-        {
-            "nombresEmpresas": "Mavesa",
-            "direccionesEmpresas": "Quito",
-            "telefonosEmpresas": "0989976543",
-            "correosEmpresas": "c@gmail.com",
-            "contraseniasEmpresas": "AKk=*9gYb9EwMkSepWWy4TsYkUg==*kP5vwiWp54EeIoOR33KJQw==*SSLMZ5l/LDFiWlzu3XkvMw=="
-        }
-    ]
-}
+[
+    {
+        "nombresEmpresas": "Angel",
+        "direccionesEmpresas": "Quito",
+        "telefonosEmpresas": "0989976543",
+        "correosEmpresas": "lparedez@espe.edu.ec4",
+        "contraseniasEmpresas": "EZo=*t1nsuc1pJzUyBOODlJIzzA==*dwSNKr4eOfd0Hh514CmDVw==*vcmSBQBA2pmCfyY0cptwlQ=="
+    }
+]
